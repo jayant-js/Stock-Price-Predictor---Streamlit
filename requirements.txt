@@ -1,7 +1,4 @@
-numpy 
-pandas 
 streamlit 
-scikit-learn
 darts
 ta
 yfinance
