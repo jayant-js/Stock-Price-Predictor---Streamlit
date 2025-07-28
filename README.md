@@ -1,6 +1,6 @@
 ---
 title: Stock Price Predictor
-emoji: 👁
+emoji: 👁git 
 colorFrom: gray
 colorTo: red
 sdk: gradio
