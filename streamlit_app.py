@@ -57,6 +57,7 @@ if st.button('Get 7-Day Forecast'):
                 # Clean up forecast dates
                 forecast_df['Date'] = pd.to_datetime(forecast_df['Date'])
                 forecast_df['Date'] = shift_weekends_to_weekdays_no_overlap(forecast_df['Date'])
+                forecast_df = forecast_df.sort_values('Date').reset_index(drop=True)
                 forecast_df['Weekday'] = forecast_df['Date'].dt.day_name()
 
                 # Display forecast
