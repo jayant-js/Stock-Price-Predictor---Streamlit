@@ -50,9 +50,9 @@ def encode_year(idx: pd.DatetimeIndex):
 
 class DartsPredictionTransformer(BaseEstimator, RegressorMixin):
     def __init__(self):
-        self.covariates_scaler = load(f'{BASE_DIR}/scaler_covariates.joblib')
-        self.target_scaler = load(f'{BASE_DIR}/scaler_target.joblib')
-        self.model = TSMixerModel.load(f'{BASE_DIR}/my_ts_mixer_model.pt')
+        self.covariates_scaler = load(f'{BASE_DIR}/model-files/scaler_covariates.joblib')
+        self.target_scaler = load(f'{BASE_DIR}/model-files/scaler_target.joblib')
+        self.model = TSMixerModel.load(f'{BASE_DIR}/model-files/my_ts_mixer_model.pt')
         self.model.to_cpu()
 
     def fit(self, X, y=None):
