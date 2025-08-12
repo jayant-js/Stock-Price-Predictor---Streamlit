@@ -56,6 +56,11 @@ class DartsPredictionTransformer(BaseEstimator, RegressorMixin):
         self.model.to_cpu()
 
     def fit(self, X, y=None):
+        target_series = TimeSeries.from_dataframe(X, value_cols=['Adj Close'], freq='D')
+        past_covariates_series = TimeSeries.from_dataframe(X.drop(columns=['Adj Close']), freq='D')
+        target_scaled = self.target_scaler.transform(target_series)
+        past_covariates_scaled = self.covariates_scaler.transform(past_covariates_series)
+        self.model.fit(series=target_scaled, past_covariates=past_covariates_scaled, epochs=3, verbose=False)
         return self
     
     def predict(self, X, forecast_horizon: int) -> pd.DataFrame:
